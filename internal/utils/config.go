@@ -11,7 +11,7 @@ type Configuration struct {
 	Url    string
 }
 
-func GetConfig() *Configuration {
+func GetConfig(section string) *Configuration {
 	configFile := "app_config.yaml"
 	viper.SetConfigType("yaml")
 	viper.SetConfigFile(configFile)
@@ -22,8 +22,11 @@ func GetConfig() *Configuration {
 		fmt.Println("Using configuration file: ", viper.ConfigFileUsed())
 	}
 
+	apiKey := fmt.Sprintf("app.%s.key", section)
+	url := fmt.Sprintf("app.%s.url", section)
+
 	return &Configuration{
-		ApiKey: viper.GetString("app.api.key"),
-		Url:    viper.GetString("app.api.url"),
+		ApiKey: viper.GetString(apiKey),
+		Url:    viper.GetString(url),
 	}
 }

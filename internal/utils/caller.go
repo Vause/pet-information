@@ -1,27 +1,15 @@
-package services
+package utils
 
 import (
 	"errors"
 	"io/ioutil"
 	"net/http"
 	"time"
-
-	"github.com/Vause/pet-information/internal/utils"
 )
 
-var (
-	url = ""
-	key = ""
-)
-
-func SetUp(configuration *utils.Configuration) {
-	url = configuration.Url
-	key = configuration.ApiKey
-}
-
-func GetResponseBody() []byte {
+func GetResponseBody(url, key string) []byte {
 	timeoutClient := http.Client{
-		Timeout: time.Second * 2, // Timeout after 2 seconds
+		Timeout: time.Second * 5, // Timeout after 5 seconds
 	}
 
 	req, _ := http.NewRequest("GET", url, nil)

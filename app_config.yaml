@@ -1,4 +1,7 @@
 app:
-  api:
+  dog:
+    key: ""
+    url: ""
+  cat:
     key: ""
     url: ""
