@@ -23,9 +23,9 @@ type Dog struct {
 	Weight           shared.Weight `json:"weight"`
 }
 
-func GetDogBreeds(configuration *utils.Configuration) {
-	configObj := services.Config{ConfigurationObject: configuration}
-	body := configObj.GetBreedInformation()
+func GetDogBreeds() {
+	config := utils.ConfigSections.Config["dog"]
+	body := services.GetBreedInformation(config)
 	var breedResponse []Dog
 	json.Unmarshal(body, &breedResponse)
 

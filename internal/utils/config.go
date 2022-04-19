@@ -6,12 +6,27 @@ import (
 	"github.com/spf13/viper"
 )
 
-type Configuration struct {
-	ApiKey string
-	Url    string
+type ConfigurationSections struct {
+	Config map[string]ConfigurationSection
 }
 
-func GetConfig(section string) *Configuration {
+type ConfigurationSection struct {
+	Key string
+	Url string
+}
+
+type App struct {
+	Cat ConfigurationSection
+	Dog ConfigurationSection
+}
+
+type Config struct {
+	App App
+}
+
+var ConfigSections *ConfigurationSections
+
+func SetUpConfig() {
 	configFile := "app_config.yaml"
 	viper.SetConfigType("yaml")
 	viper.SetConfigFile(configFile)
@@ -22,11 +37,12 @@ func GetConfig(section string) *Configuration {
 		fmt.Println("Using configuration file: ", viper.ConfigFileUsed())
 	}
 
-	apiKey := fmt.Sprintf("app.%s.key", section)
-	url := fmt.Sprintf("app.%s.url", section)
+	var cfg Config
 
-	return &Configuration{
-		ApiKey: viper.GetString(apiKey),
-		Url:    viper.GetString(url),
-	}
+	viper.Unmarshal(&cfg)
+
+	var m = make(map[string]ConfigurationSection)
+	m["cat"] = cfg.App.Cat
+	m["dog"] = cfg.App.Dog
+	ConfigSections = &ConfigurationSections{Config: m}
 }

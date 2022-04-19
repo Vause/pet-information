@@ -6,6 +6,7 @@ import (
 )
 
 func main() {
-	petInformation.GetCatBreeds(utils.GetConfig("cat"))
-	petInformation.GetDogBreeds(utils.GetConfig("dog"))
+	utils.SetUpConfig()
+	petInformation.GetCatBreeds()
+	petInformation.GetDogBreeds()
 }
