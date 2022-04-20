@@ -2,7 +2,6 @@ package petInformation
 
 import (
 	"encoding/json"
-	"fmt"
 
 	"github.com/Vause/pet-information/internal/petInformation/shared"
 	"github.com/Vause/pet-information/internal/services"
@@ -24,10 +23,9 @@ type Dog struct {
 }
 
 func GetDogBreeds() {
-	config := utils.ConfigSections.Config["dog"]
+	config := utils.Configurations["dog"]
 	body := services.GetBreedInformation(config)
 	var breedResponse []Dog
 	json.Unmarshal(body, &breedResponse)
 
-	fmt.Println(breedResponse)
 }

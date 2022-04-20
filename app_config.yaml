@@ -1,7 +1,7 @@
 app:
   dog:
-    key: "fabd686f6-89b1-40b4-8169-90218e3f0856"
-    url: "https://api.thedogapi.com/v1/breeds"
+    key: ""
+    url: ""
   cat:
-    key: "fabd686f6-89b1-40b4-8169-90218e3f0856"
-    url: "https://api.thecatapi.com/v1/breeds"
+    key: ""
+    url: ""
