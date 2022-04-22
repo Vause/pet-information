@@ -8,6 +8,7 @@ import (
 	"github.com/Vause/pet-information/internal/utils"
 )
 
+// Represents the dog object returned from the dog API
 type Dog struct {
 	BredFor          string        `json:"bred_for"`
 	BreedGroup       string        `json:"breed_group"`
@@ -22,10 +23,15 @@ type Dog struct {
 	Weight           shared.Weight `json:"weight"`
 }
 
-func GetDogBreeds() {
+func GetDogs() []Dog {
 	config := utils.Configurations["dog"]
-	body := services.GetBreedInformation(config)
-	var breedResponse []Dog
-	json.Unmarshal(body, &breedResponse)
+	body := services.GetPetInformation(config)
+	var petResponse []Dog
+	json.Unmarshal(body, &petResponse)
 
+	return petResponse
+}
+
+func (d *Dog) GetName() string {
+	return d.Name
 }

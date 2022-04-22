@@ -14,7 +14,9 @@ func GetResponseBody(url, key string) []byte {
 
 	req, _ := http.NewRequest("GET", url, nil)
 
-	req.Header.Add("X-API-KEY", key)
+	if key != "" {
+		req.Header.Add("X-API-KEY", key)
+	}
 
 	res, err := timeoutClient.Do(req)
 

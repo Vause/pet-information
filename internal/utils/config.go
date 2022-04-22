@@ -6,6 +6,7 @@ import (
 	"github.com/spf13/viper"
 )
 
+// Represents the structure under api -> <pet>
 type Config struct {
 	Key string `mapstructure:"key"`
 	Url string `mapstructure:"url"`
