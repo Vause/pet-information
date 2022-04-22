@@ -15,15 +15,15 @@ func main() {
 	fishes := petInformation.GetFishes()
 
 	for _, cat := range cats {
-		fmt.Println(GetPetName(cat))
+		fmt.Println(GetPetName(&cat))
 	}
 
 	for _, dog := range dogs {
-		fmt.Println(GetPetName(dog))
+		fmt.Println(GetPetName(&dog))
 	}
 
 	for _, fish := range fishes {
-		fmt.Println(GetPetName(fish))
+		fmt.Println(GetPetName(&fish))
 	}
 }
 

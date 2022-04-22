@@ -7,6 +7,7 @@ import (
 	"github.com/Vause/pet-information/internal/utils"
 )
 
+// Represents the fish object returned from the fish API
 type Fish struct {
 	AvLength    int64   `json:"avLength"`
 	Biology     string  `json:"biology"`
@@ -27,12 +28,12 @@ type Fish struct {
 func GetFishes() []Fish {
 	config := utils.Configurations["fish"]
 	body := services.GetPetInformation(config)
-	var breedResponse []Fish
-	json.Unmarshal(body, &breedResponse)
+	var petResponse []Fish
+	json.Unmarshal(body, &petResponse)
 
-	return breedResponse
+	return petResponse
 }
 
-func (f Fish) GetName() string {
+func (f *Fish) GetName() string {
 	return f.Name
 }

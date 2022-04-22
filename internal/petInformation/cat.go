@@ -8,6 +8,7 @@ import (
 	"github.com/Vause/pet-information/internal/utils"
 )
 
+// Represents the cat object returned from the cat API
 type Cat struct {
 	Adaptability     int64         `json:"adaptability"`
 	AffectionLevel   int64         `json:"affection_level"`
@@ -54,12 +55,12 @@ type Cat struct {
 func GetCats() []Cat {
 	config := utils.Configurations["cat"]
 	body := services.GetPetInformation(config)
-	var breedResponse []Cat
-	json.Unmarshal(body, &breedResponse)
+	var petResponse []Cat
+	json.Unmarshal(body, &petResponse)
 
-	return breedResponse
+	return petResponse
 }
 
-func (c Cat) GetName() string {
+func (c *Cat) GetName() string {
 	return c.Name
 }
