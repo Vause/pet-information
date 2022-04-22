@@ -22,10 +22,15 @@ type Dog struct {
 	Weight           shared.Weight `json:"weight"`
 }
 
-func GetDogBreeds() {
+func GetDogs() []Dog {
 	config := utils.Configurations["dog"]
-	body := services.GetBreedInformation(config)
+	body := services.GetPetInformation(config)
 	var breedResponse []Dog
 	json.Unmarshal(body, &breedResponse)
 
+	return breedResponse
+}
+
+func (d Dog) GetName() string {
+	return d.Name
 }

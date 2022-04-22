@@ -51,9 +51,15 @@ type Cat struct {
 	WikipediaURL     string        `json:"wikipedia_url"`
 }
 
-func GetCatBreeds() {
+func GetCats() []Cat {
 	config := utils.Configurations["cat"]
-	body := services.GetBreedInformation(config)
+	body := services.GetPetInformation(config)
 	var breedResponse []Cat
 	json.Unmarshal(body, &breedResponse)
+
+	return breedResponse
+}
+
+func (c Cat) GetName() string {
+	return c.Name
 }

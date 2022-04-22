@@ -1,5 +1,9 @@
 package shared
 
+type Pet interface {
+	GetName() string
+}
+
 type Image struct {
 	Height int64  `json:"height"`
 	ID     string `json:"id"`

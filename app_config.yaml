@@ -4,4 +4,6 @@ app:
     url: ""
   cat:
     key: ""
-    url: ""
+    url: "" 
+  fish:
+    url: "" 
